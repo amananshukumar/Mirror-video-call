@@ -120,116 +120,178 @@
 }
 
 .landingMainContainer > div:nth-child(1) p {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: #908fa0;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
 
-.landingMainContainer > div:nth-child(1) div[role='button'] {
-  background: linear-gradient(135deg, #6366f1 0%, #8083ff 100%);
-  width: fit-content;
-  padding: 1rem 2.5rem;
+.ctaGroup {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.glowButton {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  padding: 0.9rem 2.2rem;
   border-radius: 16px;
   box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
   transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
 }
 
-.landingMainContainer > div:nth-child(1) div[role='button']:hover {
+.glowButton:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 0 40px rgba(99, 102, 241, 0.7);
 }
 
-.landingMainContainer > div:nth-child(1) div[role='button'] a {
+.glowButton a {
   text-decoration: none;
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 
-.landingMainContainer > div:nth-child(2) {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.landingMainContainer > div:nth-child(2) img {
-  max-height: 60vh;
-  width: auto;
-  border-radius: 24px;
+.ghostButton {
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.2);
-  transition: transform 0.4s ease;
-}
-
-.landingMainContainer > div:nth-child(2) img:hover {
-  transform: scale(1.02);
-}
-
-/* Home / Dashboard Component */
-.navBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.2rem 3rem;
-  background: rgba(23, 31, 51, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 0.9rem 2.2rem;
+  border-radius: 16px;
   color: #dae2fd;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.navBar h2 {
-  font-size: 1.5rem;
+.ghostButton:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #ffffff;
+}
+
+/* Feature Bento Grid */
+.bentoSection {
+  max-width: 1400px;
+  margin: 3rem auto;
+  padding: 0 4rem;
+  width: 100%;
+  z-index: 10;
+}
+
+.bentoSection h2 {
+  font-size: 2.2rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #6366f1, #a855f7);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #c0c1ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.meetContainer {
-  display: flex;
-  padding: 4rem 3rem;
-  min-height: calc(100vh - 80px);
-  gap: 4rem;
-  justify-content: center;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }
 
-.leftPanel {
-  flex: 1;
+.featureCard {
+  background: rgba(23, 31, 51, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 2rem;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 12px;
 }
 
-.leftPanel h2 {
-  font-size: 2.5rem;
+.featureCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(99, 102, 241, 0.25);
+}
+
+.iconBox {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #6366f1;
+}
+
+.featureCard h3 {
+  font-size: 1.25rem;
   font-weight: 700;
-  line-height: 1.25;
-  margin-bottom: 2.5rem;
   color: #ffffff;
 }
 
-.rightPanel {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.featureCard p {
+  font-size: 0.95rem;
+  color: #908fa0;
+  line-height: 1.5;
 }
 
-.rightPanel > img {
-  max-width: 100%;
-  height: auto;
+/* Stats Counter Section */
+.statsSection {
+  max-width: 1400px;
+  margin: 2rem auto 4rem auto;
+  padding: 0 4rem;
+  width: 100%;
+  z-index: 10;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(99, 102, 241, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2.5rem;
+  text-align: center;
 }
 
+.statItem h3 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6366f1 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+
+.statItem p {
+  font-size: 1rem;
+  color: #908fa0;
+  font-weight: 500;
+}
+
+/* Landing Footer */
+.landingFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 19, 38, 0.9);
+  padding: 2rem 4rem;
+  text-align: center;
+  color: #908fa0;
+  font-size: 0.9rem;
+  z-index: 10;
+}
+
+/* Mobile Responsiveness Rules */
 @media (max-width: 768px) {
   .landingPageContainer nav {
     padding: 1rem 1.2rem;
@@ -258,13 +320,30 @@
   .landingMainContainer > div:nth-child(1) p {
     font-size: 1rem;
   }
-  .landingMainContainer > div:nth-child(1) div[role='button'] {
-    margin: 0 auto;
-    padding: 0.8rem 1.8rem;
+  .ctaGroup {
+    justify-content: center;
+  }
+  .glowButton, .ghostButton {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.95rem;
   }
   .landingMainContainer > div:nth-child(2) img {
     max-height: 40vh;
     max-width: 90vw;
+  }
+  .bentoSection, .statsSection {
+    padding: 0 1.2rem;
+  }
+  .bentoSection h2 {
+    font-size: 1.6rem;
+  }
+  .statsGrid {
+    padding: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .statItem h3 {
+    font-size: 2.2rem;
   }
 
   .navBar {
@@ -282,4 +361,5 @@
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
   }
-}
+}
+
