@@ -230,17 +230,56 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  .landingPageContainer nav {
+    padding: 1rem 1.2rem;
+  }
+  .landingPageContainer nav h2 {
+    font-size: 1.25rem;
+  }
+  .landingPageContainer nav .navlist {
+    gap: 0.8rem;
+  }
+  .landingPageContainer nav .navlist p {
+    font-size: 0.875rem;
+  }
+  .landingPageContainer nav .navlist div[role='button'] {
+    padding: 0.4rem 0.9rem;
+  }
   .landingMainContainer {
     flex-direction: column;
-    padding: 2rem;
+    padding: 2rem 1.2rem;
     text-align: center;
+    gap: 2rem;
+  }
+  .landingMainContainer > div:nth-child(1) h1 {
+    font-size: 2.2rem;
+  }
+  .landingMainContainer > div:nth-child(1) p {
+    font-size: 1rem;
   }
   .landingMainContainer > div:nth-child(1) div[role='button'] {
     margin: 0 auto;
+    padding: 0.8rem 1.8rem;
+  }
+  .landingMainContainer > div:nth-child(2) img {
+    max-height: 40vh;
+    max-width: 90vw;
+  }
+
+  .navBar {
+    padding: 1rem 1.2rem;
+  }
+  .navBar h2 {
+    font-size: 1.2rem;
   }
   .meetContainer {
     flex-direction: column;
-    padding: 2rem;
+    padding: 2rem 1.2rem;
+    gap: 2rem;
   }
-}
+  .leftPanel h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+}

@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
-    background: rgba(15, 23, 42, 0.75);
+    background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -44,6 +44,7 @@
     border-radius: 50px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.25);
     z-index: 30;
+    max-width: calc(100vw - 32px);
 }
 
 .buttonContainers button {
@@ -77,8 +78,8 @@
 .conferenceView video {
     width: 480px;
     height: 480px;
-    max-width: calc(100vw - 420px);
-    max-height: calc(100vh - 160px);
+    max-width: 90vw;
+    max-height: calc(100vh - 200px);
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 24px;
@@ -94,7 +95,7 @@
     height: calc(100vh - 130px);
     width: 350px;
     max-width: calc(100vw - 40px);
-    background: rgba(23, 31, 51, 0.85);
+    background: rgba(23, 31, 51, 0.9);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -155,4 +156,64 @@
     width: 100%;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(99, 102, 241, 0.25);
     text-align: center;
-}
+}
+
+/* Mobile Responsiveness Rules */
+@media (max-width: 768px) {
+    .conferenceView {
+        padding: 12px;
+        gap: 12px;
+        height: calc(100vh - 90px);
+    }
+
+    .conferenceView video {
+        width: 88vw;
+        height: 88vw;
+        max-width: 360px;
+        max-height: 360px;
+        aspect-ratio: 1 / 1;
+        border-radius: 20px;
+    }
+
+    .meetUserVideo {
+        bottom: 85px;
+        left: 16px;
+        width: 120px;
+        height: 120px;
+        border-radius: 16px;
+        border-width: 1.5px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .buttonContainers {
+        bottom: 16px;
+        padding: 6px 14px;
+        gap: 8px;
+        border-radius: 30px;
+    }
+
+    .buttonContainers button {
+        padding: 8px;
+    }
+
+    .buttonContainers svg {
+        font-size: 1.3rem;
+    }
+
+    .chatRoom {
+        top: 12px;
+        right: 12px;
+        left: 12px;
+        width: auto;
+        max-width: none;
+        height: calc(100vh - 95px);
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    .lobbyCard {
+        padding: 24px 16px;
+        border-radius: 20px;
+    }
+}
+
