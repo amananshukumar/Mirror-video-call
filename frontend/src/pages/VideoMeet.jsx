@@ -493,7 +493,7 @@ export default function VideoMeetComponent() {
                         </div>
 
                         <div style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255, 255, 255, 0.12)', boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }}>
-                            <video ref={localVideoref} autoPlay muted style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block', background: '#000' }}></video>
+                            <video ref={localVideoref} autoPlay muted style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block', background: '#000', transform: 'scaleX(-1)' }}></video>
                         </div>
                     </div>
                 </div> :

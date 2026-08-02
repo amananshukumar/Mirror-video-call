@@ -20,10 +20,11 @@
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.35);
     z-index: 20;
     transition: all 0.3s ease;
+    transform: scaleX(-1);
 }
 
 .meetUserVideo:hover {
-    transform: scale(1.03);
+    transform: scaleX(-1) scale(1.03);
     border-color: rgba(99, 102, 241, 0.8);
 }
 
