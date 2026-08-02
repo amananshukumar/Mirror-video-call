@@ -1,0 +1,158 @@
+.meetVideoContainer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 50%, #171f33 0%, #0b1326 100%);
+    overflow: hidden;
+    color: #dae2fd;
+}
+
+.meetUserVideo {
+    position: absolute;
+    bottom: 95px;
+    left: 30px;
+    width: 220px;
+    height: 220px;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 2px solid rgba(99, 102, 241, 0.5);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.35);
+    z-index: 20;
+    transition: all 0.3s ease;
+}
+
+.meetUserVideo:hover {
+    transform: scale(1.03);
+    border-color: rgba(99, 102, 241, 0.8);
+}
+
+.buttonContainers {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 24px;
+    border-radius: 50px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.25);
+    z-index: 30;
+}
+
+.buttonContainers button {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    padding: 12px;
+    transition: all 0.2s ease;
+}
+
+.buttonContainers button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.buttonContainers svg {
+    font-size: 1.8rem;
+}
+
+.conferenceView {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 24px;
+    height: calc(100vh - 100px);
+    width: 100%;
+    overflow-y: auto;
+}
+
+.conferenceView video {
+    width: 480px;
+    height: 480px;
+    max-width: calc(100vw - 420px);
+    max-height: calc(100vh - 160px);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(99, 102, 241, 0.2);
+    background: #000000;
+}
+
+.chatRoom {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: calc(100vh - 130px);
+    width: 350px;
+    max-width: calc(100vw - 40px);
+    background: rgba(23, 31, 51, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    z-index: 40;
+}
+
+.chatContainer {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatContainer h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 12px;
+}
+
+.chattingDisplay {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 16px;
+}
+
+.chattingArea {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+}
+
+.lobbyContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 50% 30%, #1e1b4b 0%, #0b1326 70%);
+    padding: 24px;
+    color: #dae2fd;
+}
+
+.lobbyCard {
+    background: rgba(23, 31, 51, 0.75);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 36px;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(99, 102, 241, 0.25);
+    text-align: center;
+}
