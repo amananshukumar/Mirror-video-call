@@ -81,6 +81,24 @@ export const connectToSocket = (server) => {
 
         })
 
+        socket.on("video-toggle", (videoState) => {
+            const [matchingRoom, found] = Object.entries(connections)
+                .reduce(([room, isFound], [roomKey, roomValue]) => {
+                    if (!isFound && roomValue.includes(socket.id)) {
+                        return [roomKey, true];
+                    }
+                    return [room, isFound];
+                }, ['', false]);
+
+            if (found === true && connections[matchingRoom]) {
+                connections[matchingRoom].forEach((elem) => {
+                    if (elem !== socket.id) {
+                        io.to(elem).emit("user-video-toggle", socket.id, videoState);
+                    }
+                });
+            }
+        })
+
         socket.on("disconnect", () => {
 
             var diffTime = Math.abs(timeOnline[socket.id] - new Date())

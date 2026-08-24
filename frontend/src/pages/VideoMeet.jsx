@@ -40,7 +40,7 @@ export default function VideoMeetComponent() {
 
     let [screen, setScreen] = useState();
 
-    let [showModal, setModal] = useState(true);
+    let [showModal, setModal] = useState(false);
 
     let [screenAvailable, setScreenAvailable] = useState();
 
@@ -122,14 +122,54 @@ export default function VideoMeetComponent() {
     };
 
     useEffect(() => {
-        if (video !== undefined && audio !== undefined) {
-            getUserMedia();
-            console.log("SET STATE HAS ", video, audio);
+        // Track state is managed directly via handleVideo and handleAudio
+    }, [video, audio])
 
+    let handleVideo = () => {
+        let nextVideo = !video;
+        setVideo(nextVideo);
+
+        if (window.localStream) {
+            window.localStream.getVideoTracks().forEach((track) => {
+                track.enabled = nextVideo;
+            });
         }
 
+        for (let id in connections) {
+            if (connections[id]) {
+                connections[id].getSenders().forEach((sender) => {
+                    if (sender.track && sender.track.kind === 'video') {
+                        sender.track.enabled = nextVideo;
+                    }
+                });
+            }
+        }
 
-    }, [video, audio])
+        if (socketRef.current) {
+            socketRef.current.emit('video-toggle', nextVideo);
+        }
+    };
+
+    let handleAudio = () => {
+        let nextAudio = !audio;
+        setAudio(nextAudio);
+
+        if (window.localStream) {
+            window.localStream.getAudioTracks().forEach((track) => {
+                track.enabled = nextAudio;
+            });
+        }
+
+        for (let id in connections) {
+            if (connections[id]) {
+                connections[id].getSenders().forEach((sender) => {
+                    if (sender.track && sender.track.kind === 'audio') {
+                        sender.track.enabled = nextAudio;
+                    }
+                });
+            }
+        }
+    };
     let getMedia = () => {
         setVideo(videoAvailable);
         setAudio(audioAvailable);
@@ -284,6 +324,14 @@ export default function VideoMeetComponent() {
 
             socketRef.current.on('chat-message', addMessage)
 
+            socketRef.current.on('user-video-toggle', (id, videoState) => {
+                setVideos((prevVideos) =>
+                    prevVideos.map((v) =>
+                        v.socketId === id ? { ...v, videoOff: !videoState } : v
+                    )
+                );
+            });
+
             socketRef.current.on('user-left', (id) => {
                 setVideos((videos) => videos.filter((video) => video.socketId !== id))
             })
@@ -382,14 +430,7 @@ export default function VideoMeetComponent() {
         return Object.assign(stream.getVideoTracks()[0], { enabled: false })
     }
 
-    let handleVideo = () => {
-        setVideo(!video);
-        // getUserMedia();
-    }
-    let handleAudio = () => {
-        setAudio(!audio)
-        // getUserMedia();
-    }
+
 
     useEffect(() => {
         if (screen !== undefined) {
@@ -582,21 +623,35 @@ export default function VideoMeetComponent() {
                         </Badge>
                     </div>
 
-                    <video className={styles.meetUserVideo} ref={localVideoref} autoPlay muted></video>
+                    {video !== false ? (
+                        <video className={styles.meetUserVideo} ref={localVideoref} autoPlay muted></video>
+                    ) : (
+                        <div className={styles.meetUserVideoOff}>
+                            <VideocamOffIcon style={{ fontSize: '2.5rem', color: '#ef4444' }} />
+                            <span style={{ fontSize: '0.75rem', color: '#dae2fd', fontWeight: 600 }}>Camera Off</span>
+                        </div>
+                    )}
 
                     <div className={styles.conferenceView}>
-                        {videos.map((video) => (
-                            <div key={video.socketId}>
-                                <video
-                                    data-socket={video.socketId}
-                                    ref={ref => {
-                                        if (ref && video.stream) {
-                                            ref.srcObject = video.stream;
-                                        }
-                                    }}
-                                    autoPlay
-                                >
-                                </video>
+                        {videos.map((videoItem) => (
+                            <div key={videoItem.socketId}>
+                                {videoItem.videoOff ? (
+                                    <div className={styles.videoOffCard}>
+                                        <VideocamOffIcon style={{ fontSize: '3.5rem', color: '#ef4444' }} />
+                                        <span style={{ fontSize: '0.9rem', color: '#dae2fd', fontWeight: 600 }}>Camera Off</span>
+                                    </div>
+                                ) : (
+                                    <video
+                                        data-socket={videoItem.socketId}
+                                        ref={ref => {
+                                            if (ref && videoItem.stream) {
+                                                ref.srcObject = videoItem.stream;
+                                            }
+                                        }}
+                                        autoPlay
+                                    >
+                                    </video>
+                                )}
                             </div>
                         ))}
                     </div>
